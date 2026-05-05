@@ -18,12 +18,7 @@ export function DocumentCard({document}:Props){
                 <p className="text-zinc-400 text-sm mt-1">{document.publicationDate} • {document.location}</p>
                 <button className="mt-4 w-full bg-green-500 text-white py-2 rounded-lg font-semibold">Contactar</button>
             </div>
-            <p>{document.name}</p>
-            <p>{document.surname}</p>
-            <p>{document.documentType}</p>
-            <p>{document.location}</p>
-            <p>{document.expirationDate}</p>
-            <p>{document.publicationDate}</p>
+           
         </div>
     )
 }
