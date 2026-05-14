@@ -10,12 +10,44 @@ export function DocumentForm({ onSubmit }: Props) {
     const[surname, setSurname] = useState('')
     const[documentType, setDocumentType] = useState('')
     const[documentPhoto, setDocumentPhoto] = useState<File | null>(null)
+    const[location, setLocation] = useState('')
+
+    function handleSubmit(e: React.FormEvent) {
+        e.preventDefault()
+        onSubmit({
+          id: '',
+          photo: '',
+          name,
+          surname,
+          documentType,
+          location,
+          expirationDate: '',
+          publicationDate: new Date().toLocaleDateString(),
+          isRecovered: false
+        })
+      }
+
+
   return (
-    <form>
-        <input type="text" value={name} placeholder="Nombre" />
-        <input type="text" value={surname} placeholder="Apellido" />
-        <input type="text" value={documentType} placeholder="Tipo de documento" />
-       <input type="file" accept="image/jpeg, image/png, image/jpg"  />
+    <form onSubmit={handleSubmit}>
+        <input type="text" value={name} placeholder="Nombre"
+        onChange={(e) => setName(e.target.value)} />
+        <input type="text" value={surname} placeholder="Apellido"
+        onChange={(e) => setSurname(e.target.value)} />
+       <input type="file" accept="image/jpeg, image/png, image/jpg" 
+       onChange={(e) => setDocumentPhoto(e.target.files?.[0] || null)}/>
+       <select
+       value={documentType}
+       onChange={(e) => setDocumentType(e.target.value)} >
+           <option value="DNI">DNI</option>
+           <option value="NIE">NIE</option>
+           <option value="Pasaporte">Pasaporte</option>
+           <option value="Tarjeta sanitaria">Tarjeta Sanitaria</option>
+   </select>
+       <input type="text" value={location} placeholder="Ubicación"
+       onChange={(e) => setLocation(e.target.value)} />
+
+       <button type="submit">Publicar documento</button>   
       
     </form>
   )

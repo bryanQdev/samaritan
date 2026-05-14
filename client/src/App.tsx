@@ -1,26 +1,21 @@
-import { NavBar } from "./components/NavBar";
-import { DocumentCard } from "./components/DocumentCard";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Tablon } from  './pages/Tablon'
+import { Login } from './pages/Login'
+import { Encontrado } from './pages/Encontrado'
+import { Chat } from './pages/Chat'
+import { NotFound} from './pages/NotFound'
 
-const testDocument = {
-  id: '1',
-  photo:'https://via.placeholder.com/300x200',
-  name: 'Bryan',
-  surname: 'Quispe',
-  documentType: 'DNI',
-  location: 'Madrid',
-  expirationDate: '05-05-2028',
-  publicationDate: '05-05-2026',
-  isRecovered: false
-}
-
-function App(){
-  return(
-    <div className="bg-zinc-900 min-h-screen p-4">
-      <NavBar/>
-      <div className="mt-8 grid grid-cols-3 gap-4">
-        <DocumentCard document={testDocument}/>
-      </div>
-    </div>
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login/>} />
+        <Route path="/tablon" element={<Tablon/>} />
+        <Route path="/encontrado" element={<Encontrado/>} />
+        <Route path="/chat/:id" element={<Chat/>} />
+        <Route path="*" element={<NotFound/>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
