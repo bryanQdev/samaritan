@@ -9,7 +9,7 @@ export function DocumentForm({ onSubmit }: Props) {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [documentType, setDocumentType] = useState('')
-  const [documentPhoto, setDocumentPhoto] = useState<File | null>(null)
+  const [_documentPhoto, setDocumentPhoto] = useState<File | null>(null)
   const [location, setLocation] = useState('')
 
   function handleSubmit(e: React.FormEvent) {
