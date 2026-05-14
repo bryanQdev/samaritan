@@ -4,7 +4,7 @@ import { Login } from './pages/Login'
 import { Encontrado } from './pages/Encontrado'
 import { Chat } from './pages/Chat'
 import { NotFound} from './pages/NotFound'
-import { Footer } from './components/Footer'
+import { Footer } from './components/EntidadesColaboradoras'
 function App() {
   return (
     <BrowserRouter>
