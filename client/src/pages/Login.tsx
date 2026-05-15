@@ -6,6 +6,7 @@ export function Login() {
   const navigate = useNavigate()
 
   async function handleGoogleLogin() {
+    console.log('botón clickeado')
     try {
       await signInWithPopup(auth, googleProvider)
       navigate('/tablon')
