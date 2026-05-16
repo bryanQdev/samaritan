@@ -90,9 +90,12 @@ export function DocumentForm({ onSubmit }: Props) {
       />
       <button
         type="submit"
-        className="w-full bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+        disabled={uploading}
+        className="w-full cursor-pointer bg-green-500 disabled:opacity-50 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition-colors"
       >
-        Publicar documento
+        {uploading ? 'Publicando...' : 'Publicar documento'}
+
+      
       </button>
     </form>
   )
