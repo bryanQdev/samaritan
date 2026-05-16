@@ -45,18 +45,22 @@ export function Tablon() {
           <NavBar/>
         </div>
         <div className="max-w-6xl mx-auto px-4 md:px-8 py-12">
-          <div className= "mb-10">
+          <div className="mb-10">
             <h2 className="text-white text-2xl font-bold mb-6">Documentos encontrados</h2>
-            <p className="text-white text-3x1 font-bold mb-2">Alguien los encontró. Puede que uno sea tuyo.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {documents.map((doc) => (
-              <DocumentCard key={doc.id} document={doc} />
-            ))}
-            </div>
+            <p className="text-zinc-400 mb-6">Alguien los encontró. Puede que uno sea tuyo.</p>
+            {loading ? (
+              <p className="text-zinc-400">Cargando documentos...</p>
+            ) : documents.length === 0 ? (
+              <p className="text-zinc-400">No hay documentos publicados todavía.</p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {documents.map((doc) => (
+                  <DocumentCard key={doc.id} document={doc} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
     )
-  }
-
-
+}
