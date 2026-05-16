@@ -5,7 +5,7 @@ export function Tablon() {
   const testDocuments = [
     {
       id: '1',
-      photo: 'https://via.placeholder.com/300x200',
+      photo: 'https://placehold.co/300x200/3f3f46/ffffff?text=Documento',
       name: 'Juan',
       surname: 'García',
       documentType: 'DNI',
@@ -16,7 +16,7 @@ export function Tablon() {
     },
     {
       id: '2',
-      photo: 'https://via.placeholder.com/300x200',
+      photo: 'https://placehold.co/300x200/3f3f46/ffffff?text=Documento',
       name: 'María',
       surname: 'López',
       documentType: 'Pasaporte',
@@ -27,7 +27,7 @@ export function Tablon() {
     },
     {
       id: '3',
-      photo: 'https://via.placeholder.com/300x200',
+      photo: 'https://placehold.co/300x200/3f3f46/ffffff?text=Documento',
       name: 'Carlos',
       surname: 'Martínez',
       documentType: 'NIE',

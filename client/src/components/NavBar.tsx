@@ -1,9 +1,20 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+import { signOut } from 'firebase/auth'
+import { auth } from '../firebase'
+import { useAuth } from '../context/AuthContext'
+
 
 export function NavBar() {
   const [search, setSearch] = useState('')
   const [filter, setFilter] = useState('')
+  const { user } = useAuth()
+  const navigate = useNavigate()
+
+  async function handleSignOut() {
+    await signOut(auth)
+    navigate('/')
+  }
 
   return (
     <nav className="flex items-center justify-between">
@@ -32,11 +43,28 @@ export function NavBar() {
         <span className="text-zinc-400 cursor-pointer">Mis publicaciones</span>
         <span className="text-zinc-400 cursor-pointer">Ayuda</span>
       </div>
+      <div className= "flex items-center gap-3">
+        {user?.photoURL && (
+          <img
+            src={user.photoURL}
+            alt={user.displayName || 'Usuario'}
+            className= "w-8 h-8 rounded-full"
+            />
+        )}
+
+      
+      
       <Link to="/encontrado">
         <button className="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">
           Publicar documento
         </button>
       </Link>
+      <button 
+      onClick={handleSignOut}
+      className="text-zinc-400 hover:text-white text-sm transition-colors"> 
+        Cerrar sesión
+      </button>
+    </div>
     </nav>
   )
 }
