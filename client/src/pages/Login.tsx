@@ -30,41 +30,41 @@ export function Login() {
   }
 
   return (
-    <div className="h-screen flex overflow-hidden">
+    <div className="min-h-screen flex flex-col md:flex-row">
   
-      <div className="flex-1 flex flex-col justify-center px-16 py-8">
-        <h1 className="logo-glow text-5xl font-bold mb-4">Samaritan</h1>
-        <h2 className="text-white text-2xl font-bold mb-6 leading-tight">
+      <div className="flex-1 flex flex-col justify-center px-8 md:px-16 py-12">
+        <h1 className="logo-glow text-4xl md:text-5xl font-bold mb-4">Samaritan</h1>
+        <h2 className="text-white text-xl md:text-2xl font-bold mb-3 leading-tight">
           Recupera lo que perdiste.<br/>
           <span className="text-zinc-400 font-normal">Ayuda a otros a hacerlo también</span>
         </h2>
         <img
           src={documentosIA}
           alt="Documentos de identidad"
-          className="w-full max-w-xl rounded-xl opacity-90 mb-8"
+          className="w-full max-w-sm md:max-w-xl rounded-xl opacity-90 my-6"
         />
-        <div className="flex gap-12">
+        <div className="flex gap-8">
           <div>
-            <p className="text-green-500 text-3xl font-bold">+2.400</p>
-            <p className="text-zinc-500 text-sm">documentos recuperados</p>
+            <p className="text-green-500 text-xl md:text-2xl font-bold">+2.400</p>
+            <p className="text-zinc-500 text-xs">documentos recuperados</p>
           </div>
           <div>
-            <p className="text-green-500 text-3xl font-bold">98%</p>
-            <p className="text-zinc-500 text-sm">tasa de éxito</p>
+            <p className="text-green-500 text-xl md:text-2xl font-bold">98%</p>
+            <p className="text-zinc-500 text-xs">tasa de éxito</p>
           </div>
           <div>
-            <p className="text-green-500 text-3xl font-bold">24h</p>
-            <p className="text-zinc-500 text-sm">tiempo medio de respuesta</p>
+            <p className="text-green-500 text-xl md:text-2xl font-bold">24h</p>
+            <p className="text-zinc-500 text-xs">tiempo medio de respuesta</p>
           </div>
         </div>
       </div>
   
-      <div className="w-px bg-zinc-800"/>
+      <div className="hidden md:block w-px bg-zinc-800"/>
   
-      <div className="w-[480px] flex items-center justify-center px-12">
-        <div className="w-full border border-zinc-700/50 rounded-2xl p-10" style={{ background: 'rgba(255,255,255,0.03)' }}>
-          <h3 className="text-white text-3xl font-bold mb-3">Entra a la plataforma</h3>
-          <p className="text-zinc-500 text-sm mb-10">Rápido y seguro con tu cuenta de Google</p>
+      <div className="w-full md:w-[480px] flex flex-col justify-center px-8 md:px-12 py-8 md:py-0">
+        <div className="border border-zinc-700/50 rounded-2xl p-8 md:p-10" style={{ background: 'rgba(255,255,255,0.03)' }}>
+          <h3 className="text-white text-2xl md:text-3xl font-bold mb-3">Entra a la plataforma</h3>
+          <p className="text-zinc-500 text-sm mb-8">Rápido y seguro con tu cuenta de Google</p>
           <button
             onClick={handleGoogleLogin}
             className="w-full flex items-center justify-center gap-3 bg-white text-zinc-900 px-6 py-4 rounded-lg font-semibold hover:bg-zinc-100 cursor-pointer mb-6 btn-google text-lg"
