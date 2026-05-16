@@ -1,18 +1,31 @@
 import { signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from '../firebase'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 
 export function Login() {
   const navigate = useNavigate()
+  const { user, loading } = useAuth()
 
   async function handleGoogleLogin() {
-    console.log('botón clickeado')
     try {
       await signInWithPopup(auth, googleProvider)
       navigate('/tablon')
     } catch (error) {
       console.error('Error al iniciar sesión:', error)
     }
+  }
+
+  if (loading) {
+    return (
+      <div className="bg-zinc-900 min-h-screen flex items-center justify-center">
+        <p className="text-zinc-400">Cargando...</p>
+      </div>
+    )
+  }
+
+  if (user) {
+    return <Navigate to="/tablon" />
   }
 
   return (
