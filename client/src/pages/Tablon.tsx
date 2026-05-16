@@ -41,14 +41,14 @@ export function Tablon() {
 
     return (
       <div className="bg-zinc-900 min-h-screen" style={{ background: 'linear-gradient(135deg, #09090b 0%, #0f172a 50%, #09090b 100%)'}}>
-        <div className="px-8 py-4 navbar-blur">
+        <div className="md:px-8 px-4 py-4 navbar-blur">
           <NavBar/>
         </div>
-        <div className="max-w-6xl mx-auto px-8 py-12">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 py-12">
           <div className= "mb-10">
             <h2 className="text-white text-2xl font-bold mb-6">Documentos encontrados</h2>
             <p className="text-white text-3x1 font-bold mb-2">Alguien los encontró. Puede que uno sea tuyo.</p>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {documents.map((doc) => (
               <DocumentCard key={doc.id} document={doc} />
             ))}
