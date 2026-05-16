@@ -19,7 +19,7 @@ export function NavBar() {
   return (
     <nav className="flex items-center justify-between">
       <div>
-        <Link to="/tablon" className="text-white font-bold text-xl">Samaritan</Link>
+        <Link to="/tablon" className="logo-glow text-xl">Samaritan</Link>
       </div>
       <input
         type="text"
@@ -40,8 +40,8 @@ export function NavBar() {
         <option value="Tarjeta sanitaria">Tarjeta Sanitaria</option>
       </select>
       <div className="flex gap-4">
-        <span className="text-zinc-400 cursor-pointer">Mis publicaciones</span>
-        <span className="text-zinc-400 cursor-pointer">Ayuda</span>
+        <span className="text-zinc-400 cursor-pointer hover:text-white transition-colors">Mis publicaciones</span>
+        <span className="text-zinc-400 cursor-pointer hover:text-white transition-colors">Ayuda</span>
       </div>
       <div className= "flex items-center gap-3">
         {user?.photoURL && (
@@ -61,7 +61,7 @@ export function NavBar() {
       </Link>
       <button 
       onClick={handleSignOut}
-      className="text-zinc-400 hover:text-white text-sm transition-colors"> 
+      className="text-zinc-400 hover:text-white text-sm transition-colors cursor-pointer"> 
         Cerrar sesión
       </button>
     </div>
