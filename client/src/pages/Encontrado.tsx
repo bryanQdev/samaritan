@@ -1,15 +1,39 @@
 import { NavBar } from '../components/NavBar'
 import { DocumentForm } from '../components/DocumentForm'
 import type { FoundDocument } from '../types/document'
+import { supabase } from '../supabase'
+import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 
 export function Encontrado() {
-  function handleSubmit(document: FoundDocument) {
-    console.log('Documento publicado:', document)
+  const { user } =useAuth()
+  const navigate = useNavigate()
+
+  async function handleSubmit(document: FoundDocument) {
+    const { error } = await supabase
+    .from('documents')
+    .insert({
+      name: document.name,
+      surname: document.surname,
+      document_type: document.documentType,
+      location: document.location,
+      photo_url: document.photo,
+      publication_date: document.publicationDate,
+      is_recovered: false,
+      user_id: user?.uid
+    })  
+
+
+  if (error){
+    console.error('Error al publicar: ', error)
+  } else {
+    navigate('/tablon')
+  }
   }
 
   return (
     <div className="bg-zinc-900 min-h-screen">
-      <div className="border-b border-zinc-700 px-8 py-4">
+      <div className="navbar-blur px-8 py-4">
         <NavBar />
       </div>
       <div className="max-w-lg mx-auto px-8 py-10">

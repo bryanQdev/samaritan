@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { FoundDocument } from '../types/document'
+import { supabase } from '../supabase'
 
 interface Props {
   onSubmit: (document: FoundDocument) => void
@@ -9,19 +10,38 @@ export function DocumentForm({ onSubmit }: Props) {
   const [name, setName] = useState('')
   const [surname, setSurname] = useState('')
   const [documentType, setDocumentType] = useState('')
-  const [_documentPhoto, setDocumentPhoto] = useState<File | null>(null)
+  const [documentPhoto, setDocumentPhoto] = useState<File | null>(null)
   const [location, setLocation] = useState('')
+  const [uploading,setUploading] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    setUploading(true)
+    
+    let photoUrl = ''
+
+    if(documentPhoto){
+      const fileName = `${Date.now()}-${documentPhoto.name}`
+      const { error: uploadError } =await supabase.storage
+        .from('documents')
+        .upload(fileName, documentPhoto)
+
+      if(uploadError){
+        console.error('Error al subir foto:', uploadError)
+      } else{
+        const { data } = supabase.storage
+        .from('documents')
+        .getPublicUrl(fileName)
+      photoUrl = data.publicUrl
+      }
+    }
     onSubmit({
       id: '',
-      photo: '',
+      photo: photoUrl,
       name,
       surname,
       documentType,
       location,
-      expirationDate: '',
       publicationDate: new Date().toLocaleDateString(),
       isRecovered: false
     })
