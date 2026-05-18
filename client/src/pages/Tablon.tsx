@@ -3,10 +3,22 @@ import { DocumentCard } from '../components/DocumentCard'
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabase'
 import type { FoundDocument } from '../types/document'
+import { useSearch } from '../context/SearchContext'
 
 export function Tablon() {
   const [documents, setDocuments] = useState<FoundDocument[]>([])
   const [loading, setLoading] = useState(true)
+  const { search, filter } = useSearch()
+
+  const filteredDocuments = documents.filter((doc)=> {
+    const matchesSearch = search === '' ||
+      doc.name.toLowerCase().includes(search.toLowerCase()) ||
+      doc.surname.toLowerCase(). includes(search.toLowerCase())
+    const matchesFilter = filter === '' || doc.documentType === filter
+    return matchesSearch && matchesFilter
+
+  })
+
 
   useEffect(()=>{
     async function fetchDocuments(){
@@ -54,7 +66,7 @@ export function Tablon() {
               <p className="text-zinc-400">No hay documentos publicados todavía.</p>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {documents.map((doc) => (
+                {filteredDocuments.map((doc) => (
                   <DocumentCard key={doc.id} document={doc} />
                 ))}
               </div>

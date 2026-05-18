@@ -6,10 +6,14 @@ import { Chat } from './pages/Chat'
 import { NotFound} from './pages/NotFound'
 import { Footer } from './components/EntidadesColaboradoras'
 import { AuthProvider } from './context/AuthContext'
+import { SearchProvider } from './context/SearchContext'
 import { ProtectedRoute } from './components/ProtectedRoute' 
+
 function App() {
   return (
   <AuthProvider>
+    <SearchProvider>
+
     <BrowserRouter>
     <div className= "bg-zinc-900 min-h-screen">
       <Routes>
@@ -22,7 +26,8 @@ function App() {
       <Footer />
       </div>  
 
-    </BrowserRouter>
+        </BrowserRouter>
+      </SearchProvider>
     </AuthProvider>
   )
 }

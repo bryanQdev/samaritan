@@ -1,13 +1,13 @@
-import { useState } from 'react'
+
 import { Link,useNavigate } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { auth } from '../firebase'
 import { useAuth } from '../context/AuthContext'
+import { useSearch } from '../context/SearchContext'
 
 
 export function NavBar() {
-  const [search, setSearch] = useState('')
-  const [filter, setFilter] = useState('')
+  const {search, setSearch, filter, setFilter} = useSearch()
   const { user } = useAuth()
   const navigate = useNavigate()
 
@@ -61,7 +61,7 @@ export function NavBar() {
       </Link>
       <button 
       onClick={handleSignOut}
-      className="hidden sm:block text-zinc-400 hover:text-white text-sm transition-colors cursor-pointer"> 
+      className="block text-zinc-400 hover:text-white text-sm transition-colors cursor-pointer"> 
         Cerrar sesión
       </button>
     </div>

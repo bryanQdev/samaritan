@@ -23,7 +23,7 @@ export function DocumentCard({ document }: Props) {
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-zinc-950 to-transparent" />
       </div>
       <div className="p-4">
-        <h3 className="text-white font-semibold text-lg">{document.documentType} encontrado en {document.location}</h3>
+        <h3 className="text-white font-semibold text-lg">{document.documentType}-{document.name} {document.surname[0]}****</h3>
         <p className="text-zinc-500 text-sm mt-1">{document.publicationDate} • {document.location}</p>
         <Link to={`/chat/${document.id}`}>
           <button className="mt-4 w-full bg-green-500 text-white py-2 rounded-lg font-semibold transition-all duration-300 btn-gradient">
